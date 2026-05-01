@@ -1,21 +1,25 @@
 import * as stylex from '@stylexjs/stylex'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useWeatherWidget } from '../hooks/useWeatherWidget.js'
 import { styles } from '../styles/WeatherWidget.js'
 
 const WeatherWidget = ({ theme = 'light' }) => {
   const { temperatureDisplay, icon, description, location, loading, error } = useWeatherWidget()
   const [visible, setVisible] = useState(false)
-  const [prevLoading, setPrevLoading] = useState(true)
+  const prevLoadingRef = useRef(true)
 
   useEffect(() => {
-    if (prevLoading === loading) return
+    if (prevLoadingRef.current === loading) return
     setVisible(false)
-    const t = window.setTimeout(() => {
-      setPrevLoading(loading)
-      window.setTimeout(() => setVisible(true), 50)
+    let inner
+    const outer = window.setTimeout(() => {
+      prevLoadingRef.current = loading
+      inner = window.setTimeout(() => setVisible(true), 50)
     }, 400)
-    return () => window.clearTimeout(t)
+    return () => {
+      window.clearTimeout(outer)
+      window.clearTimeout(inner)
+    }
   }, [loading])
 
   useEffect(() => {
@@ -26,7 +30,7 @@ const WeatherWidget = ({ theme = 'light' }) => {
   const textTone = theme === 'dark' ? styles.darkText : styles.lightText
   const fade = stylex.props(styles.fadeWrapper, visible ? styles.visible : styles.hidden)
 
-  if (prevLoading) {
+  if (prevLoadingRef.current) {
     return (
       <div {...stylex.props(styles.container)}>
         <div {...fade}>

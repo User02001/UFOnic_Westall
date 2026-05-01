@@ -16,7 +16,7 @@ const buttonCategories = [
       ['https://outlook.office.com/mail/', 'outlook', 'Outlook Email', false],
       ['https://westallsc.vic.edu.au/', 'westallweb', "Westall's Website", false],
       ['/bell-times', 'bell', 'Bell Times', true],
-      ['/school-map', 'schoollay', 'School Map', true],
+      ['/school-map', 'school_map', 'School Map', true],
       ['https://print.westallsc.vic.edu.au', 'print', 'Printing Job', false],
     ],
   },

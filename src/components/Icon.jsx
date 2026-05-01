@@ -70,6 +70,7 @@ const Icon = ({
     if (!iconData || iconData.type !== 'svg') {
       return null
     }
+
     return uniquifySvgIds(iconData.content, svgPrefix)
   }, [iconData, svgPrefix])
 
@@ -93,7 +94,7 @@ const Icon = ({
     )
   }
 
-  if (iconData.type === 'png') {
+  if (iconData.type === 'png' || iconData.type === 'webp') {
     return (
       <img
         src={iconData.content}

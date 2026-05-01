@@ -77,9 +77,9 @@ export const useWeatherWidget = () => {
     error: null,
   })
 
-  const fetchWeather = async () => {
+  const fetchWeather = async (isRefresh = false) => {
     try {
-      setWeather(prev => ({ ...prev, loading: true, error: null }))
+      setWeather(prev => ({ ...prev, loading: isRefresh ? prev.loading : true, error: null }))
 
       const response = await fetch(
         'https://api.open-meteo.com/v1/forecast?latitude=-37.9319&longitude=145.0555&current=temperature_2m,weather_code,is_day&timezone=Australia/Melbourne&forecast_days=1'
@@ -105,7 +105,7 @@ export const useWeatherWidget = () => {
 
   useEffect(() => {
     fetchWeather()
-    const interval = setInterval(fetchWeather, 60000)
+    const interval = setInterval(() => fetchWeather(true), 60000)
     return () => clearInterval(interval)
   }, [])
 

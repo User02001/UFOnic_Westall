@@ -50,6 +50,16 @@ export const styles = stylex.create({
     marginTop: '-0.75rem',
   },
 
+  homeLogoWrapper: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: 'fit-content',
+    height: 'fit-content',
+    alignSelf: 'center',
+    marginTop: '10px',
+  },
+
   homeLogoLink: {
     background: 'none',
     border: 'none',
@@ -57,30 +67,33 @@ export const styles = stylex.create({
     cursor: 'pointer',
     zIndex: 3,
     textDecoration: 'none',
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-
-  homeLogoIcon: {
-    width: '155px',
-    height: 'auto',
-    objectFit: 'contain',
+    width: 'fit-content',
+    height: 'fit-content',
     transition: 'transform 0.3s ease',
     willChange: 'transform',
-    filter: 'var(--header-logo-filter, none)',
-    animation: 'var(--header-logo-animation, none)',
-    position: 'relative',
-    marginBottom: '6px',
-    top: '2px',
     ':hover': {
       transform: 'translateY(-5px)',
     },
   },
 
+  homeLogoIcon: {
+    width: '92px',
+    height: 'auto',
+    objectFit: 'contain',
+    pointerEvents: 'none',
+    filter: 'var(--header-logo-filter, none)',
+    animation: 'var(--header-logo-animation, none)',
+    position: 'relative',
+    marginBottom: '6px',
+    top: '2px',
+  },
+
   headerNav: {
     display: 'flex',
-    gap: 'clamp(0.5rem, calc(10vw - 5rem), 1rem)',
+    gap: 'clamp(0.4rem, calc(10vw - 5rem), 0.85rem)',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 'calc(-1rem + -0.5vh)',
@@ -88,29 +101,56 @@ export const styles = stylex.create({
   },
 
   headerNavLink: {
-    background: 'none',
-    border: 'none',
+    '--nav-button-size': '42px',
+    '--nav-icon-size': '30px',
+    marginTop: '18px',
+    width: 'var(--nav-button-size)',
+    height: 'var(--nav-button-size)',
     padding: 0,
+    boxSizing: 'border-box',
     cursor: 'pointer',
     textDecoration: 'none',
     position: 'relative',
-    transition: 'all 0.3s ease',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
     WebkitTapHighlightColor: 'transparent',
+    background:
+      'linear-gradient(145deg, rgba(255,255,255,0.26), rgba(255,255,255,0.07))',
+    border: '1.5px solid rgba(255,255,255,0.62)',
+    borderRadius: '12px',
+    backdropFilter: 'blur(8px)',
+    WebkitBackdropFilter: 'blur(8px)',
+    transition: 'transform 0.25s ease, box-shadow 0.25s ease',
+    willChange: 'transform',
+
+    '@media (max-width: 780px)': {
+      '--nav-button-size': '45px',
+      '--nav-icon-size': '30px',
+    },
+
+    '@media (max-width: 480px)': {
+      '--nav-button-size': '35px',
+      '--nav-icon-size': '28px',
+    },
+
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        transform: 'scale(1.08) translateY(-2px)',
+        boxShadow: '0 8px 20px rgba(0,0,0,0.22)',
+      },
+    },
   },
 
   headerNavIcon: {
-    width: 'clamp(40px, calc(5vw + 10px), 35px)',
-    height: 'auto',
-    transition: 'transform 0.3s ease, filter 0.3s ease',
-    willChange: 'transform',
-    '@media (hover: hover) and (pointer: fine)': {
-      ':hover': {
-        transform: 'translateY(-3px)',
-        filter: 'brightness(1.2)',
-      },
-    },
+    width: 'var(--nav-icon-size)',
+    height: 'var(--nav-icon-size)',
+    display: 'block',
+    pointerEvents: 'none',
+    flexShrink: 0,
+    position: 'relative',
+    zIndex: 1,
+    filter:
+      'drop-shadow(0 4px 8px rgba(0,0,0,0.22)) inset 0 1px 2px rgba(255,255,255,0.7)',
   },
 })

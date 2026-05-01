@@ -9,7 +9,7 @@ import { useIcon } from '../hooks/useIcons.js'
 const NAV_ITEMS = [
   {
     href: '/',
-    icon: 'home',
+    icon: 'home_header',
     label: 'Home',
     title: 'Go to home page',
     buttonKey: 'header-home',
@@ -24,28 +24,28 @@ const NAV_ITEMS = [
   },
   {
     href: '/bell-times',
-    icon: 'bell_times',
+    icon: 'bell_header',
     label: 'Bell Times',
     title: 'View bell times',
     buttonKey: 'header-bell-times',
   },
   {
     href: '/school-map',
-    icon: 'school_map',
+    icon: 'school_map_header',
     label: 'School Map',
     title: 'View school map',
     buttonKey: 'header-school-map',
   },
   {
     href: '/it-support',
-    icon: 'it_support',
+    icon: 'it_support_header',
     label: 'IT Support',
     title: 'Get IT support',
     buttonKey: 'header-it-support',
   },
   {
     href: '/faqs',
-    icon: 'faqs',
+    icon: 'faqs_header',
     label: 'FAQs',
     title: 'View frequently asked questions',
     buttonKey: 'header-faqs',
@@ -97,19 +97,21 @@ const Header = () => {
     >
       <WeatherWidget theme={theme} />
       <div {...stylex.props(styles.headerCenter)}>
-        <Link
-          to="/"
-          title="Go to UFOnic Westall home page"
-          aria-label="Go to UFOnic Westall home page"
-          {...stylex.props(styles.homeLogoLink)}
-        >
-          <Icon
-            name="main_logo"
-            alt="UFOnic Westall logo"
-            draggable={false}
-            {...stylex.props(styles.homeLogoIcon)}
-          />
-        </Link>
+        <div {...stylex.props(styles.homeLogoWrapper)}>
+          <Link
+            to="/"
+            title="UFOnic Westall Home"
+            aria-label="Go to UFOnic Westall home page"
+            {...stylex.props(styles.homeLogoLink)}
+          >
+            <Icon
+              name="main_logo"
+              alt="UFOnic Westall logo"
+              draggable={false}
+              {...stylex.props(styles.homeLogoIcon)}
+            />
+          </Link>
+        </div>
 
         <nav aria-label="Primary navigation" {...stylex.props(styles.headerNav)}>
           {NAV_ITEMS.map(({ href, icon, label, title, external, buttonKey }) => {

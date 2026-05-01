@@ -6,7 +6,7 @@ export const styles = stylex.create({
     flex: 1,
     minHeight: 0,
     position: 'relative',
-    marginTop: '5px',
+    marginTop: '0px',
   },
 
   homeContent: {
