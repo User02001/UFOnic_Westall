@@ -267,4 +267,25 @@ export const styles = stylex.create({
     background: 'linear-gradient(135deg, #da70d6 0%, #9370db 100%)',
     boxShadow: '0 2px 8px rgba(147, 112, 219, 0.35)',
   },
+  iconMain: {
+    position: 'relative',
+    width: '100px',
+    height: '100px',
+    display: 'block',
+    filter: 'drop-shadow(0 4px 5px rgba(0, 0, 0, 0.22))',
+
+    '::before': {
+      content: '""',
+      position: 'absolute',
+      top: '5%',
+      left: '10%',
+      width: '80%',
+      height: '35%',
+      borderRadius: '22px 22px 50% 50%',
+      background:
+        'linear-gradient(to bottom, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04), transparent)',
+      pointerEvents: 'none',
+      zIndex: 2,
+    },
+  },
 })

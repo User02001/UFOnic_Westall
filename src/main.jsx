@@ -7,7 +7,16 @@ import { setTitle } from './utils/pageTitles.js'
 
 window.setTitle = setTitle
 
-createRoot(document.getElementById('root')).render(
+const mountClass =
+  `uf-${Math.random().toString(36).slice(2, 12)}-${Date.now().toString(36)}`
+
+const mountPoint = document.createElement('div')
+
+mountPoint.className = mountClass
+
+document.body.appendChild(mountPoint)
+
+createRoot(mountPoint).render(
   <StrictMode>
     <App />
   </StrictMode>

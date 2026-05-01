@@ -63,49 +63,6 @@ a {
     color: inherit;
 }
 
-.appBody {
-    width: 100%;
-    overflow-x: hidden;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-top: 20vh;
-    isolation: isolate;
-}
-
-    .appBody::before {
-        content: '';
-        position: absolute;
-        inset: 0;
-        pointer-events: none;
-        z-index: -2;
-        background-image: var(--app-bg-image);
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-@media (max-width: 780px) {
-    .appBody {
-        padding-top: 150px;
-        background-image: none;
-        background: linear-gradient(to right, #ffffff 0%, #ffff88 100%);
-    }
-
-        .appBody::before {
-            background-color: transparent;
-        }
-}
-
-@media (min-width: 781px) {
-    .appBody {
-        padding-top: 140px;
-    }
-}
-
 body[data-theme='light'] {
     --header-strip-color: var(--header-light-strip);
     --header-box-shadow: 0 2px 6px var(--light-shadow);
@@ -140,71 +97,6 @@ body[data-theme='dark'] {
     50% {
         filter: drop-shadow(0 0 30px rgba(218, 165, 32, 1)) drop-shadow(0 0 40px rgba(218, 165, 32, 0.7)) drop-shadow(0 0 50px rgba(218, 165, 32, 0.5));
     }
-}
-
-@keyframes rotateLeftAndGlowControlled {
-    0% {
-        transform: rotate(0deg);
-        animation-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    8% {
-        transform: rotate(-1deg);
-    }
-
-    16% {
-        transform: rotate(-3deg);
-    }
-
-    24% {
-        transform: rotate(-5deg);
-    }
-
-    32% {
-        transform: rotate(-7deg);
-    }
-
-    40% {
-        transform: rotate(-9deg);
-    }
-
-    48% {
-        transform: rotate(-10deg);
-        animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-    }
-
-    56% {
-        transform: rotate(-9deg);
-    }
-
-    64% {
-        transform: rotate(-7deg);
-    }
-
-    72% {
-        transform: rotate(-5deg);
-    }
-
-    80% {
-        transform: rotate(-3deg);
-    }
-
-    88% {
-        transform: rotate(-1deg);
-    }
-
-    96% {
-        transform: rotate(-0.2deg);
-    }
-
-    100% {
-        transform: rotate(0deg);
-        animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
-    }
-}
-
-.ufonic-icon-animating {
-    animation: rotateLeftAndGlowControlled 0.3s ease-out forwards;
 }
 
 @keyframes mobileClickBurstIcon {
@@ -247,17 +139,6 @@ body[data-theme='dark'] {
         }
 }
 
-@media (max-width: 780px) {
-    .appBody::before {
-        background-image: none;
-        background: linear-gradient(to right, #ffffff 0%, #ffff88 100%);
-    }
-
-    .appBody::after {
-        background-color: transparent;
-    }
-}
-
 @keyframes weatherSpin {
     0% {
         transform: rotate(0deg);
@@ -267,32 +148,3 @@ body[data-theme='dark'] {
         transform: rotate(360deg);
     }
 }
-
-.ufonic-main-icon {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    display: block;
-    filter: drop-shadow(0 4px 5px rgba(0, 0, 0, 0.22));
-}
-
-    .ufonic-main-icon svg {
-        width: 100%;
-        height: 100%;
-        display: block;
-        overflow: visible;
-        filter: drop-shadow(0 -1px 0 rgba(255, 255, 255, 0.48)) drop-shadow(0 2px 1px rgba(0, 0, 0, 0.22));
-    }
-
-    .ufonic-main-icon::before {
-        content: '';
-        position: absolute;
-        top: 5%;
-        left: 10%;
-        width: 80%;
-        height: 35%;
-        border-radius: 22px 22px 50% 50%;
-        background: linear-gradient( to bottom, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04), transparent );
-        pointer-events: none;
-        z-index: 2;
-    }

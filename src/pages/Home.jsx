@@ -158,7 +158,6 @@ const ButtonLink = ({
   onHoverEnd,
 }) => {
   const [href, iconName, label, isInternal] = button
-  const [isAnimating, setIsAnimating] = useState(false)
   const mobileClickingRef = useRef(false)
   const iconData = useIcon(iconName)
 
@@ -167,14 +166,7 @@ const ButtonLink = ({
       ? { '--button-bg-image': `url(${iconData.content})` }
       : undefined
 
-  const triggerAnimation = () => {
-    if (isAnimating) return
-    setIsAnimating(true)
-    window.setTimeout(() => setIsAnimating(false), 350)
-  }
-
   const handleMouseEnter = () => {
-    triggerAnimation()
     onHoverStart(buttonKey)
   }
 
@@ -216,8 +208,7 @@ const ButtonLink = ({
         alt={label}
         title={label}
         draggable={false}
-        className={`ufonic-main-icon ${isAnimating ? 'ufonic-icon-animating' : ''}`}
-        style={{ width: ICON_SIZE, height: ICON_SIZE }}
+        {...stylex.props(styles.iconMain)}
       />
 
       <span

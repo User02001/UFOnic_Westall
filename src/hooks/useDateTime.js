@@ -199,7 +199,7 @@ export function useDateTime() {
         const slot = getCurrentPeriod(schedule, now)
         periodText = slot ? `${slot.period} | ${slot.start} – ${slot.end}` : 'Between periods...'
       } else if (now >= schoolEnd) {
-        periodText = 'School ended! Go home!'
+        periodText = 'School ended! Have a great day!'
       }
 
       setState({ dateTime, termWeek, weekType, periodText, lateNight: false, showTimezoneWarning })
