@@ -1,0 +1,116 @@
+import * as stylex from '@stylexjs/stylex'
+
+export const styles = stylex.create({
+  siteHeader: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    minHeight: '140px',
+    backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundImage: 'var(--header-bg-image, none)',
+    backgroundColor: 'var(--header-bg-color, transparent)',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    zIndex: 5,
+    overflow: 'visible',
+    paddingTop: '10px',
+    paddingBottom: '10px',
+    boxShadow: 'var(--header-box-shadow, 0 2px 6px rgba(0, 0, 0, 0.1))',
+    '::after': {
+      content: '""',
+      display: 'block',
+      position: 'absolute',
+      bottom: '-4px',
+      left: 0,
+      width: '100%',
+      height: '5px',
+      zIndex: 3,
+      backgroundColor: 'var(--header-strip-color, #FAFF00)',
+      boxShadow: 'var(--header-box-shadow, 0 2px 6px rgba(0, 0, 0, 0.1))',
+    },
+    '@media (max-width: 780px)': {
+      minHeight: '150px',
+      paddingTop: '10px',
+      paddingBottom: '10px',
+    },
+  },
+
+  headerCenter: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
+    gap: '0.5rem',
+    maxHeight: '100%',
+    marginTop: '-0.75rem',
+  },
+
+  homeLogoLink: {
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    cursor: 'pointer',
+    zIndex: 3,
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  homeLogoIcon: {
+    width: '155px',
+    height: 'auto',
+    objectFit: 'contain',
+    transition: 'transform 0.3s ease',
+    willChange: 'transform',
+    filter: 'var(--header-logo-filter, none)',
+    animation: 'var(--header-logo-animation, none)',
+    position: 'relative',
+    marginBottom: '6px',
+    top: '2px',
+    ':hover': {
+      transform: 'translateY(-5px)',
+    },
+  },
+
+  headerNav: {
+    display: 'flex',
+    gap: 'clamp(0.5rem, calc(10vw - 5rem), 1rem)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 'calc(-1rem + -0.5vh)',
+    flexWrap: 'nowrap',
+  },
+
+  headerNavLink: {
+    background: 'none',
+    border: 'none',
+    padding: 0,
+    cursor: 'pointer',
+    textDecoration: 'none',
+    position: 'relative',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    WebkitTapHighlightColor: 'transparent',
+  },
+
+  headerNavIcon: {
+    width: 'clamp(40px, calc(5vw + 10px), 35px)',
+    height: 'auto',
+    transition: 'transform 0.3s ease, filter 0.3s ease',
+    willChange: 'transform',
+    '@media (hover: hover) and (pointer: fine)': {
+      ':hover': {
+        transform: 'translateY(-3px)',
+        filter: 'brightness(1.2)',
+      },
+    },
+  },
+})
